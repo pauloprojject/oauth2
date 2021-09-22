@@ -8,7 +8,8 @@ export default{
     login(){
         const querystring = {
             client_id: CLIENT_ID,
-            response_type: 'token'
+            response_type: 'token',
+            expires_in: 3600
         };
         window.location = `${ROOT_URL}/oauth2/authorize?${qs.stringify(querystring)}`;
     },
@@ -17,6 +18,6 @@ export default{
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        })
+        }).catch(res => res)
     }
 }
